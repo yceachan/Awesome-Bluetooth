@@ -1,4 +1,8 @@
 [
+  "docusaurus-style-admonitions",
+  "floating-toc",
+  "obsidian-git",
+  "terminal",
   "obsidian-image-auto-upload-plugin",
-  "floating-toc"
+  "obsidian-html-plugin"
 ]

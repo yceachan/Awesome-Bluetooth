@@ -1,3 +1,5 @@
 {
-  "theme": "obsidian"
+  "enabledCssSnippets": [
+    "show-tab-extension"
+  ]
 }
