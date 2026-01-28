@@ -2,7 +2,7 @@ import pdfplumber
 import os
 
 PART_F_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part F Attribute Protocol (ATT)/source.pdf"
-DIR_OUT = "notebook/vol3_host/att_raw"
+DIR_OUT = "notebook/vol3_host/raw/att_raw"
 
 # Base Page: 1488
 

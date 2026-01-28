@@ -17,6 +17,8 @@ HOGP 的核心思想是将 USB HID 的“端点 (Endpoints)”映射为 GATT 的
 | Control Endpoint (Get/Set) | Feature Report Characteristic | Read / Write                          |
 | USB Suspend/Resume         | HID Control Point             | Write (`0x00`: Suspend, `0x01`: Exit) |
 
+> **深入阅读**: 关于 ATT Notification 报文在链路层和物理层的具体封装格式，请参阅 **[HID Report 全栈数据流解构](hid_to_air_packet_flow.md)**。
+
 ---
 
 ## 2. 服务层级架构 (Service Hierarchy)

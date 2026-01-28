@@ -13,16 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notebook/vol3_host/l2cap_packet_formats.md",
-                "mode": "preview",
+                "file": "notebook/vol3_host/gap_modes_procedures.md",
+                "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "l2cap_packet_formats"
+              "title": "gap_modes_procedures"
+            }
+          },
+          {
+            "id": "6f5277776c94f8ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "notebook/vol3_host/l2cap/l2cap_general_operation.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "l2cap_general_operation"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -79,7 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 259.5
+    "width": 574.5
   },
   "right": {
     "id": "e084b13639c4ab25",
@@ -95,7 +111,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notebook/vol3_host/l2cap_packet_formats.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "l2cap_packet_formats 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -171,19 +186,19 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "terminal:Open terminal": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -191,43 +206,47 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "bases:新建数据库": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "terminal:Open terminal": false
     }
   },
-  "active": "c61ab5a9456cec97",
+  "active": "6f5277776c94f8ef",
   "lastOpenFiles": [
-    "notebook/vol3_host/gatt_raw/gatt_hierarchy.md",
-    "notebook/vol3_host/gatt_overview.md",
-    "notebook/README.md",
-    "notebook/vol3_host/gatt_raw",
-    "notebook/vol3_host/smp_raw/smp_protocol_raw.md",
-    "notebook/vol3_host/gap_modes_procedures.md",
-    "notebook/vol6_controller/link_layer_states.md",
-    "notebook/vol6_controller/air_interface_packets.md",
-    "notebook/vol6_controller/connection_establishment.md",
-    "notebook/profiles/hid/hogp_architecture.md",
-    "notebook/profiles/hid/hid_report_map_guide.md",
+    "notebook/vol3_host/l2cap/l2cap_packet_formats.md",
+    "notebook/profiles/hid/hid_to_RF_packet_flow.md",
     "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角_v2.md",
-    "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角_v1.md",
-    "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角_v0.md",
-    "notebook/profiles/hid/hid_device_development.md",
-    "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角.md",
-    "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角v0.md",
-    "notebook/profiles/hid/嵌入式HID设备开发——自底向上视角.bak.md",
-    "notebook/profiles/hid/chat/蓝牙键盘 HID 开发流程解析.html",
-    "交叉编译技术",
-    "MIT-6.S081/Ref-forkLab",
-    "MIT-6.S081",
-    "CSAPP/SHELL/Vim 快捷操作速查.md",
-    "CSAPP/SHELL/SHELL.md",
-    "CSAPP/SHELL/SHELL环境变量设置跨平台对比.md",
-    "Better Linux/profile/未命名.md",
-    "Better Linux/profile/proxy.md",
-    "CSAPP/SHELL/tree目录树查询札记.md",
-    "Better Wins/pwsh/profile异地同步trick.md",
-    "Better Wins/pwsh/封装wsl tree.md",
-    "Better Wins/pwsh/pwsh实用PROFILE.md",
-    "Better Wins/pwsh/profile-yichip.ps1",
-    "Better Linux/profile"
+    "notebook/vol3_host/att/att_pdu_formats.md",
+    "notebook/vol3_host/gatt/service_discovery.md",
+    "notebook/profiles/hid/hid_report_map_guide.md",
+    "notebook/profiles/hid/gap_role_in_hogp.md",
+    "notebook/vol3_host/README.md",
+    "notebook/vol3_host/gap/gap_advertising_data.md",
+    "notebook/vol3_host/gatt/gatt_overview.md",
+    "notebook/vol3_host/gatt/gatt_attribuite-IO交互.md",
+    "notebook/vol3_host/gatt/caching_robustness.md",
+    "notebook/vol3_host/gatt_raw/gatt_hierarchy.md",
+    "notebook/profiles/hid/hogp_initialization_packet_flow.md",
+    "notebook/vol3_host/att/att_protocol.md",
+    "notebook/vol3_host/raw/gap_raw/gap_security_raw.md",
+    "notebook/vol3_host/raw/gap_raw/gap_modes_procedures_raw.md",
+    "notebook/vol3_host/raw/gap_raw/gap_advertising_data_raw.md",
+    "notebook/vol3_host/raw/gap_raw",
+    "notebook/vol3_host/raw/att_raw/att_pdus_raw.md",
+    "notebook/vol3_host/raw/att_raw/att_concepts_raw.md",
+    "notebook/vol3_host/raw/att_raw",
+    "notebook/vol3_host/l2cap/l2cap_general_operation.md",
+    "notebook/vol3_host/l2cap",
+    "notebook/vol3_host/smp/smp_pairing_process.md",
+    "notebook/vol3_host/smp/smp_keys_distribution.md",
+    "notebook/vol3_host/smp",
+    "notebook/vol3_host/gap/gap_modes_procedures.md",
+    "notebook/vol3_host/gap",
+    "notebook/vol3_host/gatt",
+    "notebook/vol3_host/att",
+    "notebook/vol3_host/raw",
+    "notebook/vol3_host/gap_advertising_data.md",
+    "notebook/vol3_host/gap_modes_procedures.md",
+    "notebook/vol3_host/gatt_raw",
+    "notebook/profiles/hid/chat/蓝牙键盘 HID 开发流程解析.html"
   ]
 }

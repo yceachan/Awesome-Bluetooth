@@ -2,7 +2,8 @@ import pdfplumber
 import os
 
 PART_G_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part G Generic Attribute Profile (GATT)/source.pdf"
-DIR_OUT = "notebook/vol3_host"
+# Updated output path to follow the raw paradigm
+DIR_OUT = "notebook/vol3_host/raw/gatt_raw"
 
 # Relative pages (Original - 1547)
 RANGE_OVERVIEW = range(5, 18)  # 1552-1564
@@ -36,15 +37,15 @@ def main():
 
     with pdfplumber.open(PART_G_PDF) as pdf:
         extract_section(pdf, RANGE_OVERVIEW, 
-                       os.path.join(DIR_OUT, "gatt_overview.md"), 
+                       os.path.join(DIR_OUT, "gatt_overview_raw.md"), 
                        "GATT Profile Overview (角色与基础)")
         
         extract_section(pdf, RANGE_HIERARCHY, 
-                       os.path.join(DIR_OUT, "gatt_hierarchy.md"), 
+                       os.path.join(DIR_OUT, "gatt_hierarchy_raw.md"), 
                        "GATT Hierarchy (服务与特征层级)")
 
         extract_section(pdf, RANGE_PROCEDURE, 
-                       os.path.join(DIR_OUT, "gatt_procedures.md"), 
+                       os.path.join(DIR_OUT, "gatt_procedures_raw.md"), 
                        "GATT Procedures (读/写/通知交互)")
 
 if __name__ == "__main__":

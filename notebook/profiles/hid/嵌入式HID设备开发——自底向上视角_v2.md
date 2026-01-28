@@ -11,7 +11,7 @@
 在 USB/HID 协议中，设备不直接发送 "A" 或 "B"，而是发送一串二进制数据（Payload）。**Report Descriptor** 就是一本“字典”，它必须在一切开始前被定义好，告诉主机如何翻译这串二进制数据。
 
 它是 HID 开发的灵魂，是一种基于 Item 的紧凑字节码语言。
-
+> **深度指南**: [hid_report_map_guide](hid_report_map_guide.md)
 ### 1.1 标准键盘 (Boot Keyboard) 及其字节码解析
 这是最兼容的 8 字节结构，也是 BIOS 的最小系统环境下 HID 设备能通用的基础：
 `[Modifier] [Reserved] [Key1] [Key2] [Key3] [Key4] [Key5] [Key6]`
@@ -31,13 +31,13 @@
     0x25, 0x01,    //   Logical Maximum (1)
     0x75, 0x01,    //   Report Size (1) -> 每个数据占 1 bit
     0x95, 0x08,    //   Report Count (8) -> 一共 8 个
-    0x81, 0x02,    //   Input (Data, Var, Abs) -> Variable: 每一位独立表示一个键状态
+    0x81, 0x02,    /*b1*/ //   Input (Data, Var, Abs) -> Variable: 每一位独立表示一个键状态
 
     // --- 第2字节：保留字节 (Reserved) ---
     // 为了字节对齐，填充 1 个字节的常量
     0x95, 0x01,    //   Report Count (1)
     0x75, 0x08,    //   Report Size (8) -> 8 bits
-    0x81, 0x03,    //   Input (Const, Var, Abs) -> Constant: 主机忽略此数据
+    0x81, 0x03,    /*b2*/ //   Input (Const, Var, Abs) -> Constant: 主机忽略此数据
 
     // --- 第3-8字节：普通键值数组 (Key Array) ---
     // 只能同时存 6 个键，超过会发生 Phantom State
@@ -156,6 +156,8 @@ graph TD
 ```
 
 ### 3.2 详细穿梭过程
+> **微观视角**: 如果你想查看每一层具体把数据包变成了什么样（Hex Dump），请参阅 **[从按键到空口：HID Report 全栈数据流解构](hid_to_air_packet_flow.md)**。
+
 1.  **GATT/ATT 层 (逻辑通道)**:
     *   数据被封装为 **ATT Handle Value Notification**。
     *   **Handle**: 对应 Report Characteristic 的 Value Handle (例如 `0x0012`)。主机靠这个知道是“键盘数据”而不是“电量”。
@@ -268,4 +270,4 @@ sequenceDiagram
 4.  **封装**: L2CAP/ATT 给它穿上协议的外衣。
 5.  **等待**: Link Layer 等待射频时隙。
 6.  **注册**: HOGP 服务发现与 CCCD 握手赋予了它合法身份。
-7.  **发射**: Linker向Modern推送最终报文，在PHY层（RF），调制为2.4G RF信号
+7.  **发射**: Link Layer 向 Modem 推送最终报文，在 PHY 层（RF），调制为 2.4G RF 信号

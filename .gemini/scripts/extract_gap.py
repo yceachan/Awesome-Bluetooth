@@ -2,7 +2,7 @@ import pdfplumber
 import os
 
 PART_C_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part C Generic Access Profile/source.pdf"
-DIR_OUT = "notebook/vol3_host/gap_raw"
+DIR_OUT = "notebook/vol3_host/raw/gap_raw"
 
 # Base Page: 1315
 # Section 9: Operational Modes (LE) - Page 1389 to 1422

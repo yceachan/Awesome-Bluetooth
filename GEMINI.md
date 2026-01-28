@@ -50,15 +50,16 @@
 *   **Vol 1 Architecture**:
     *   `notebook/vol1_architecture/transport_hierarchy.md`: 物理信道 -> 逻辑链路 -> L2CAP 的层级映射。
 *   **Vol 3 Host**:
-    *   `notebook/vol3_host/l2cap_general_operation.md`: CID 分配、Basic/FlowControl/LE-Credit 模式。
-    *   `notebook/vol3_host/l2cap_packet_formats.md`: B-Frame, K-Frame 结构。
-    *   `notebook/vol3_host/att_protocol.md`: PDU 结构、Opcode 字典、MTU 交换与错误码。
-    *   `notebook/vol3_host/gatt_overview.md`: Client/Server 角色, Attribute 结构, Service 层级。
-    *   `notebook/vol3_host/gatt_procedures.md`: Read/Write/Notify/Indicate 交互流程。
-    *   `notebook/vol3_host/gap_advertising_data.md`: 广播数据格式 (Flags, Local Name, UUIDs)。
-    *   `notebook/vol3_host/gap_modes_procedures.md`: 发现模式 (Discoverable)、连接模式 (Connectable) 与 安全模式。
-    *   `notebook/vol3_host/smp_pairing_process.md`: 配对流程 (Phase 1-3), Just Works vs Passkey。
-    *   `notebook/vol3_host/smp_keys_distribution.md`: 密钥类型 (LTK, IRK, CSRK) 与分发。
+    *   `notebook/vol3_host/l2cap/l2cap_general_operation.md`: CID 分配、Basic/FlowControl/LE-Credit 模式。
+    *   `notebook/vol3_host/l2cap/l2cap_packet_formats.md`: B-Frame, K-Frame 结构。
+    *   `notebook/vol3_host/att/att_pdu_formats.md`: PDU 结构 (Error, Write, Notify) 与事务规则。
+    *   `notebook/vol3_host/gatt/gatt_overview.md`: Client/Server 角色, Attribute 结构。
+    *   `notebook/vol3_host/gatt/service_discovery.md`: 发现服务与特征的详细子过程 (Sub-procedures)。
+    *   `notebook/vol3_host/gatt/caching_robustness.md`: GATT Caching, Database Hash 与 HOGP 秒连机制。
+    *   `notebook/vol3_host/gap/gap_advertising_data.md`: 广播数据格式 (Flags, Local Name, UUIDs)。
+    *   `notebook/vol3_host/gap/gap_modes_procedures.md`: 发现模式、连接模式与角色定义。
+    *   `notebook/vol3_host/smp/smp_pairing_process.md`: 配对流程 (Phase 1-3)。
+    *   `notebook/vol3_host/smp/smp_keys_distribution.md`: 密钥类型与分发。
 *   **Vol 4 HCI**:
     *   `notebook/vol4_hci/hci_packet_structures.md`: Command, Event, ACL/ISO Data 包结构与 H4 协议。
     *   `notebook/vol4_hci/hci_initialization_flow.md`: 初始化流程与核心命令映射。
@@ -68,11 +69,15 @@
     *   `notebook/vol6_controller/connection_establishment.md`: 广播与连接建立的详细 Mermaid 时序图。
     *   `notebook/vol6_controller/isochronous_channels.md`: CIS/BIS 与 ISOAL 机制 (LE Audio)。
 *   **Profiles (Application Layer)**:
-    *   `notebook/profiles/hid/hogp_architecture.md`: HOGP 架构与服务依赖 (v1.1 ISO Support)。
+    *   `notebook/profiles/hid/hogp_architecture.md`: HOGP 架构与服务依赖。
     *   `notebook/profiles/hid/hid_report_map_guide.md`: Report Descriptor 实战与字节码解析。
     *   `notebook/profiles/hid/hid_device_development.md`: 嵌入式开发指南 (扫描、上报、功耗)。
+    *   `notebook/profiles/hid/hid_to_RF_packet_flow.md`: 全栈数据流解构 (HID -> ATT -> L2CAP -> LL -> RF)。
+    *   `notebook/profiles/hid/hogp_initialization_packet_flow.md`: HOGP 初始化配置 (UUID -> Handle 映射)。
+    *   `notebook/profiles/hid/gap_role_in_hogp.md`: GAP 在 HOGP 中的角色 (广播、配对触发、回连)。
 
 ### ⏳ 待办 (To-Do)
+*   **SMP Deep Dive**: Legacy vs LE Secure Connections, Pairing Phases 1-3, Key Distribution details.
 *   **Maintenance**: 随着 Spec 更新持续维护。
 *   **More Profiles**: 扩展至 HRP (Heart Rate), FTMS (Fitness Machine) 等。
 *   **Advanced Controller**: Channel Sounding (v6.0) 深度实战。
