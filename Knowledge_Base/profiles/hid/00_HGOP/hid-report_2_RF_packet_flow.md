@@ -12,17 +12,28 @@
 
 ## 1. 应用层 (Application Layer): 原始 HID Report
 
-固件检测到按键扫描矩阵的变化，生成符合 Report Descriptor 定义的原始数据。
+固件检测到按键扫描矩阵的变化，生成符合 Report Descriptor 定义的原始数据`report packet`。
 
-*   **数据内容**: 标准 8 字节键盘报告
-*   **Hex 视图**:
-    ```text
-    00 00 04 00 00 00 00 00
-    ```
-    *   `Byte 0`: 0x00 (无 Modifier 键)
-    *   `Byte 1`: 0x00 (Reserved)
-    *   `Byte 2`: **0x04** (Key 'A')
-    *   `Byte 3-7`: 0x00 (无其他按键)
+  这是数据流的起点。根据 HID 规范，一个标准的 8 字节键盘报告格式如下：
+
+   * Byte 0: Modifier Keys. 状态指示字节，每一位代表一个修饰键（如 Ctrl, Shift, Alt）。
+       * 0000 0001 = Left Ctrl
+       * 0000 0010 = Left Shift
+   * Byte 1: Reserved. 保留，通常为 0x00。
+   * Byte 2-7: Keycode Array. 存放同时按下的最多 6 个键的键值。
+
+  示例: 按下 'a' 键
+  'a' 键对应的 HID Usage ID 是 0x04。报告内容为：
+
+  ```text
+  1 [0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00]  // 8 Bytes
+  2 |      |      |
+  3 |      |      └- 'a' Keycode
+  4 |      └- Reserved
+  5 └- No modifier keys
+  ```
+
+
 
 ---
 
@@ -37,21 +48,28 @@
         *   Report Reference (`0x2908`): 定义 Report ID 和类型 (Input/Output)。
 
 **Handle 的由来**:
+
 在设备初始化时，GATT 表被创建，每个特征值（Value）都会被分配一个唯一的 16-bit **Attribute Handle**。
 假设 Firmware 定义如下：
+
 *   Handle `0x0014`: Report Characteristic Declaration
 *   **Handle `0x0015`: Report Characteristic Value (这里存储 HID 数据)**
 *   Handle `0x0016`: Report Reference Descriptor
 
 因此，当我们说“发送 HID Report”时，实际上是向 Handle `0x0015` 进行操作。
 
-> **Tech Insight: UUID 去哪了？**
-> 
-> 在最终传输的 ATT 报文（Section 3）中，**完全不存在** `0x1812` 或 `0x2A4D` 这些 UUID。
-> *   **初始化阶段 (Discovery)**: 主机通过读取 UUID 建立映射表（如：Handle `0x0015` = 键盘输入）。
-> *   **运行阶段 (Runtime)**: 仅传输 2 字节的 **Handle** (`15 00`)。
-> 
-> 这种设计避免了在每个微小的数据包中重复传输冗长的 16-bit/128-bit UUID，是 BLE 低功耗与高效率的关键设计之一。
+---
+
+
+
+**Tech Insight: UUID 去哪了？**
+
+在最终传输的 ATT 报文（Section 3）中，**完全不存在** `0x1812` 或 `0x2A4D` 这些 UUID。
+
+ *   **初始化阶段 (Discovery)**: 主机通过读取 UUID 建立映射表（如：Handle `0x0015` = 键盘输入）。
+ *   **运行阶段 (Runtime)**: **仅传输 2 字节的 Handle (`15 00`)。**
+
+ 这种设计避免了在每个微小的数据包中重复传输冗长的 16-bit/128-bit UUID，是 BLE 低功耗与高效率的关键设计之一。
 
 ---
 
@@ -62,9 +80,10 @@ HID Report 被封装为 ATT 协议数据单元 (PDU)。HOGP 规范强制要求 I
 *   **封装动作**: 组合 Opcode、Handle 和 HID 数据。
 *   **ATT PDU 结构**:
     *   **Opcode (1 Byte)**: `0x1B` (Handle Value Notification)
-    *   **Handle (2 Bytes)**: `0x0015` (来自上一节的映射)
+    *   **Handle (2 Bytes)**: `0x0015` 指向这个 HID Report 特征值的UUID的句柄
     *   **Value (8 Bytes)**: 原始 HID Report Data
 *   **Hex 视图 (11 Bytes)**:
+    
     ```text
     1B 15 00 00 00 04 00 00 00 00 00
     ^  ^---^ ^---------------------^
@@ -79,10 +98,11 @@ ATT PDU 作为一个完整的 SDU 传递给 L2CAP 层。由于在 BLE 中使用�
 
 *   **封装动作**: 添加长度和通道 ID。
 *   **L2CAP PDU 结构**:
-    *   **Length (2 Bytes)**: `0x000B` (11 Bytes, 小端序: `0B 00`)
-    *   **CID (2 Bytes)**: `0x0004` (Attribute Protocol CID, 小端序: `04 00`)
-    *   **Payload (11 Bytes)**: ATT PDU
+    *   **Length (2 Bytes):** L2CAP 载荷的长度。在这里是 11 字节。
+       * **Channel ID (2 Bytes)**: 通道标识符。对于 LE ATT，此值固定为 0x0004。
+       * **Payload (n Bytes):** 载荷，也就是我们那 11 字节的 ATT PDU。
 *   **Hex 视图 (15 Bytes)**:
+    
     ```text
     0B 00 04 00 1B 15 00 00 00 04 00 00 00 00 00
     ^---^ ^---^ ^------------------------------^
@@ -107,8 +127,8 @@ L2CAP PDU 进入链路层。此时处于连接状态 (Connection State)，使用
 
 *   **LL PDU (21 Bytes)**:
     ```text
-    02 13 [ Encrypted ( L2CAP PDU ... + MIC ) ]
-    ^---^ ^-----------------------------------^
+    02 13 [ Encrypted ( L2CAP PDU ...  [MIC (4B)] )]
+    ^---^ ^----------------------------------------^
     Header          Ciphertext Payload
     ```
 
@@ -120,11 +140,12 @@ LL PDU 被送入调制器，转化为最终的 RF 空口比特流。以 **LE 1M 
 
 *   **封装动作**: 添加前导码、接入地址、CRC，并进行白化 (Whitening)。
 *   **Packet 结构**:
+    
     1.  **Preamble (1 Byte)**: `0xAA` 或 `0x55` (取决于接入地址 LSB，用于时钟同步)。
     2.  **Access Address (4 Bytes)**: 连接唯一的接入地址 (如 `0x5E 0xC6 0x82 0x1A`)。
     3.  **PDU (21 Bytes)**: 上一步生成的 LL PDU。
     4.  **CRC (3 Bytes)**: 对 PDU 计算的循环冗余校验。
-
+    
 *   **最终数字域报文 (29 Bytes, 232 µs)**:
     ```text
     AA | 1A 82 C6 5E | 02 13 XX..[19 Bytes]..XX | YY YY YY

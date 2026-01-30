@@ -6,7 +6,7 @@ allowed-tools: Bash, Read, Write, Edit
 
 # Mermaid Diagrams Skill
 
-This skill enables you to create valid, well-formed Mermaid.js diagrams with automatic validation using the validate_mermaid.sh script.
+This skill enables you to create valid, well-formed Mermaid.js diagrams with automatic validation using the validate_mermaid.sh (Linux/Bash) or validate_mermaid.ps1 (Windows/PowerShell) scripts.
 
 ## Creating Diagrams
 
@@ -34,8 +34,8 @@ When asked to create a Mermaid diagram:
 
 **CRITICAL**: Every Mermaid diagram MUST be validated before being considered complete.
 
-Use the `validate_mermaid.sh` script for all validation tasks. The script supports:
-- Single diagram strings via stdin
+Use the `validate_mermaid.sh` (Bash) or `validate_mermaid.ps1` (PowerShell) script for all validation tasks. The script supports:
+- Single diagram strings via stdin/pipeline
 - Single diagram files (.mmd)
 - Markdown files with embedded diagrams (.md)
 
@@ -68,6 +68,30 @@ base/skills/mermaid/scripts/validate_mermaid.sh /path/to/diagram.mmd
 
 ```bash
 base/skills/mermaid/scripts/validate_mermaid.sh /path/to/document.md
+```
+
+### Validation Methods (Windows / PowerShell)
+
+#### Method 1: Validate diagram from pipeline (recommended for inline diagrams)
+
+```powershell
+$diagram = @"
+flowchart TD
+    A --> B
+"@
+$diagram | base/skills/mermaid/scripts/validate_mermaid.ps1
+```
+
+#### Method 2: Validate single diagram file
+
+```powershell
+base/skills/mermaid/scripts/validate_mermaid.ps1 -FilePath "D:\path\to\diagram.mmd"
+```
+
+#### Method 3: Validate all diagrams in markdown file
+
+```powershell
+base/skills/mermaid/scripts/validate_mermaid.ps1 "D:\path\to\document.md"
 ```
 
 ### Interpreting Validation Results
@@ -356,15 +380,13 @@ erDiagram
 
 ## Script Location
 
-The validation script is located at:
-```
-base/skills/mermaid/scripts/validate_mermaid.sh
-```
+The validation scripts are located at:
+- **Bash**: `base/skills/mermaid/scripts/validate_mermaid.sh`
+- **PowerShell**: `base/skills/mermaid/scripts/validate_mermaid.ps1`
 
-Run it with:
-- `echo 'diagram' | base/skills/mermaid/scripts/validate_mermaid.sh` (stdin)
-- `base/skills/mermaid/scripts/validate_mermaid.sh file.mmd` (single file)
-- `base/skills/mermaid/scripts/validate_mermaid.sh file.md` (markdown with multiple diagrams)
+Run them with:
+- **Bash**: `echo 'diagram' | .../validate_mermaid.sh`
+- **PowerShell**: `$diagram | .../validate_mermaid.ps1`
 
 ## Resources
 
@@ -377,7 +399,7 @@ Run it with:
 
 A diagram is complete when:
 1. ✅ Syntax is correct for the diagram type
-2. ✅ Validation passes with validate_mermaid.sh script
+2. ✅ Validation passes with validate_mermaid.sh or validate_mermaid.ps1 script
 3. ✅ Diagram accurately represents the requested information
 4. ✅ Labels are clear and properly quoted
 5. ✅ Styling is appropriate (if requested)

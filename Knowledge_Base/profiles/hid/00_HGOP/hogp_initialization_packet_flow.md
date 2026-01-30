@@ -1,6 +1,6 @@
 # HOGP 初始化与配置：ATT 报文全解析
 
-> **前置语境**: 本文档接续 [HID Report 全栈数据流解构](hid_to_RF_packet_flow.md)。
+> **前置语境**: 本文档接续 [HID Report 全栈数据流解构](hid-report_2_RF_packet_flow.md)。
 > 当设备与主机（Host）完成配对（Pairing）与加密（Encryption）后，进入**服务发现与配置**阶段。
 > 这是主机建立“UUID -> Handle”映射表（"查户口"）并正式启用设备的唯一过程。
 
@@ -115,7 +115,52 @@ Op Len    Entry 1      UUID    Entry 2       UUID
 
 ---
 
-## 5. 阶段四：配置与使能 (Configuration)
+## 5. 阶段四：读取报表描述符 (Read Report Desc)
+
+在配置设备之前，主机必须知道 Report 的具体格式（8字节还是2字节？）。
+这通过读取 UUID `0x2A4B` (Report Desc) 来完成。由于描述符通常长达上百字节，远超单包 MTU (23字节)，**分包读取**是必然发生的。
+
+### 5.1 首包读取：Read Request
+主机尝试读取 Map 的 Handle（假设为 `0x0019`）。
+
+*   **ATT Opcode**: `0x0A` (Read Req)
+*   **Handle**: `0x0019`
+
+**ATT PDU (3 Bytes)**:
+```text
+0A 19 00
+```
+
+**响应 (Read Rsp)**:
+设备返回前 22 字节数据（假设 MTU=23）。
+```text
+0B 05 01 09 06 A1 01 ... (22 Bytes Data)
+^  ^-------------------^
+Op Data
+```
+
+### 5.2 后续读取：Read Blob Request (长读)
+主机发现没读完（返回长度 = MTU-1），发起“断点续传”。
+
+*   **ATT Opcode**: `0x0C` (Read Blob Req)
+*   **Handle**: `0x0019`
+*   **Offset**: `0x0016` (22)
+
+**ATT PDU (5 Bytes)**:
+```text
+0C 19 00 16 00
+^  ^---^ ^---^
+Op Handle Offset(22)
+```
+
+**响应 (Read Blob Rsp)**:
+设备返回接下来的数据。此过程循环直至读完。
+
+> **缓存机制 (Caching)**: 这一步仅在**首次配对**或**服务变更**时发生。回连时，主机直接使用本地缓存的 Map，完全跳过此阶段。
+
+---
+
+## 6. 阶段五：配置与使能 (Configuration)
 
 地图绘制完毕，主机开始下发指令，正式“激活”设备。
 

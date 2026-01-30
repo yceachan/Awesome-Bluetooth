@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_G_PDF = "Bluetooth_Knowledge_Base/Vol 6 Low Energy Controller/Part G Isochronous Adaptation Layer/source.pdf"
+PART_G_PDF = "Docs/Bt-core/chunk/Vol 6 Low Energy Controller/Part G Isochronous Adaptation Layer/source.pdf"
 DIR_OUT = "notebook/vol6_controller/iso_raw"
 
 # Base Page: 3760

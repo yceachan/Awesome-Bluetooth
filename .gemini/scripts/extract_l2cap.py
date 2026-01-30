@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_A_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part A Logical Link Control and Adaptation Protocol Specification/source.pdf"
+PART_A_PDF = "Docs/Bt-core/chunk/Vol 3 Host/Part A Logical Link Control and Adaptation Protocol Specification/source.pdf"
 DIR_OUT = "notebook/vol3_host"
 
 # Relative pages (Original - 1084)

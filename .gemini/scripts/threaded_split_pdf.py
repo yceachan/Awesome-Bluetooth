@@ -2,15 +2,20 @@ import xml.etree.ElementTree as ET
 import os
 import re
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pypdf import PdfReader, PdfWriter
 from tqdm import tqdm
 
 # Configuration
 XML_FILE = '【书签】蓝牙规格书-Core_v6.2.xml'
 SOURCE_PDF = '蓝牙规格书-Core_v6.2.pdf'
-BASE_DIR = 'Bluetooth_Knowledge_Base'
-MAX_WORKERS = 12
+BASE_DIR = 'Docs/Bt-core/chunk'
+
+# 调整并发数：
+# 多进程模式下，每个进程都会独立加载 PDF 索引，消耗较多内存。
+# 建议设置为物理 CPU 核心数，或者根据内存情况调整。
+MAX_WORKERS = 12 
 
 def sanitize_name(name):
     """Sanitizes a string to be safe for directory names."""
@@ -53,36 +58,48 @@ def get_structure_with_pages(element):
 def process_single_part(task):
     """
     Worker function to process a single split task.
-    task: dict containing 'name', 'start_page', 'end_page', 'path'
+    Executed in a separate process.
     """
     try:
         start_page = task['start_page']
         end_page = task['end_page']
         output_filename = os.path.join(task['path'], "source.pdf")
         
-        # Double check existence (in case of race conditions or restart)
+        # Double check existence
         if os.path.exists(output_filename):
             return f"Skipped (Exists): {task['name']}"
 
         # Ensure directory exists
         os.makedirs(task['path'], exist_ok=True)
 
-        # Open a fresh reader for each thread to avoid race conditions/locks
+        # Performance Timer
+        t0 = time.time()
+
+        # In Multiprocessing, we MUST open the file inside the process.
+        # Passing PdfReader objects between processes is not pickle-able/efficient.
+        # This uses more RAM but bypasses the GIL.
         reader = PdfReader(SOURCE_PDF)
-        total_pages = len(reader.pages)
         
+        # Validation
+        total_pages = len(reader.pages)
+        if start_page >= total_pages:
+            return f"Skipped (OOR): {task['name']}"
+            
         writer = PdfWriter()
         
         # Add pages
-        for p in range(start_page, end_page):
-            if p < total_pages:
-                writer.add_page(reader.pages[p])
+        # Iterate carefully to avoid index errors
+        page_count = 0
+        for p in range(start_page, min(end_page, total_pages)):
+            writer.add_page(reader.pages[p])
+            page_count += 1
         
         # Write to file
         with open(output_filename, 'wb') as f:
             writer.write(f)
             
-        return f"Completed: {task['name']} ({end_page - start_page} pages)"
+        duration = time.time() - t0
+        return f"Completed: {task['name']} ({page_count} pages) in {duration:.2f}s"
 
     except Exception as e:
         return f"Error processing {task['name']}: {str(e)}"
@@ -101,17 +118,17 @@ def main():
         raw_structure = get_structure_with_pages(main_book)
         raw_structure.sort(key=lambda x: x['page'])
         
-        # Calculate ranges and prepare tasks
-        tasks = []
-        
-        # Get total pages once to calculate limits
+        # 1. Quick pass to get total pages (lightweight)
         try:
-            temp_reader = PdfReader(SOURCE_PDF)
-            total_pdf_pages = len(temp_reader.pages)
+            reader = PdfReader(SOURCE_PDF)
+            total_pdf_pages = len(reader.pages)
+            print(f"Source PDF loaded. Total pages: {total_pdf_pages}")
         except Exception as e:
-            print(f"Error reading source PDF: {e}")
+            print(f"Error checking source PDF: {e}")
             return
 
+        # 2. Prepare tasks
+        tasks = []
         for i, item in enumerate(raw_structure):
             start_page = item['page']
             
@@ -120,15 +137,11 @@ def main():
             else:
                 end_page = total_pdf_pages
             
-            # Validation
-            if start_page >= total_pdf_pages:
-                continue
-            if end_page <= start_page:
-                continue
-                
             output_filename = os.path.join(item['path'], "source.pdf")
+            
+            # Pre-filter existing files to avoid spawning processes for nothing
             if os.path.exists(output_filename):
-                continue # Skip already processed
+                continue 
                 
             tasks.append({
                 'name': item['name'],
@@ -137,25 +150,25 @@ def main():
                 'path': item['path']
             })
             
-        print(f"Found {len(tasks)} parts to process.")
+        print(f"Found {len(tasks)} parts pending processing.")
         
         if not tasks:
-            print("All parts are already processed.")
+            print("All tasks completed.")
             return
 
-        print(f"Starting execution with {MAX_WORKERS} threads...")
+        print(f"Starting execution with {MAX_WORKERS} PROCESSES (High CPU Mode)...")
+        print("Note: Memory usage may increase. Watch your system resources.")
         
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            # Submit all tasks
+        # Change to ProcessPoolExecutor for CPU-bound tasks
+        with ProcessPoolExecutor(max_workers=MAX_WORKERS) as executor:
             future_to_task = {executor.submit(process_single_part, task): task for task in tasks}
             
-            # Use tqdm for progress bar
             with tqdm(total=len(tasks), unit="part") as pbar:
                 for future in as_completed(future_to_task):
                     result = future.result()
-                    # Optional: Print result if it's an error
                     if "Error" in result:
                         pbar.write(result)
+                    # pbar.write(result) # Uncomment to see details log
                     pbar.update(1)
                     
         print("\nAll tasks completed.")

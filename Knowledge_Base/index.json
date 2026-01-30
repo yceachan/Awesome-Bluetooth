@@ -1,0 +1,153 @@
+{
+    "Knowledge_Base": {
+        "Overview": {
+            "_files": [
+                "README.md"
+            ]
+        },
+        "profiles": {
+            "hid": {
+                "00_HGOP": {
+                    "_files": [
+                        "gap_role_in_hogp.md",
+                        "hid-report_2_RF_packet_flow.md",
+                        "hid_cognitive_system.md",
+                        "hogp_architecture.md",
+                        "hogp_att_packet_exchange_deep_dive.md",
+                        "hogp_device_initialization_flow.md",
+                        "hogp_initialization_packet_flow.md"
+                    ]
+                },
+                "01_Specifications": {},
+                "02_Descriptors": {
+                    "_files": [
+                        "00_hid_report_desc_guide.md",
+                        "01_standard_keyboard_usage_map.md",
+                        "02_Consumer_and_SC_AC_keys.md"
+                    ]
+                },
+                "03_App_notes": {
+                    "_files": [
+                        "hid-kb-long_pressed情景分析.md",
+                        "multimedia_keys_implementation.md",
+                        "nkro_implementation_guide.md"
+                    ]
+                },
+                "04_Kernel_OS": {
+                    "_files": [
+                        "Addt-kernel-hid-wiki.md"
+                    ]
+                },
+                "_files": [
+                    "嵌入式HID设备开发——自底向上视角_v0.md",
+                    "嵌入式HID设备开发——自底向上视角_v1.md",
+                    "嵌入式HID设备开发——自底向上视角_v2.md"
+                ],
+                "data": {
+                    "_files": [
+                        "consumer_media_raw.md",
+                        "consumer_media_usage_table_raw.md",
+                        "keyboard_usage_table_raw.md",
+                        "ref_keyboard_usage_map.md"
+                    ]
+                }
+            }
+        },
+        "vol1_architecture": {
+            "_files": [
+                "transport_hierarchy.md"
+            ]
+        },
+        "vol3_host": {
+            "_files": [
+                "README.md"
+            ],
+            "att": {
+                "_files": [
+                    "att_pdu_formats.md"
+                ]
+            },
+            "gap": {
+                "_files": [
+                    "gap_advertising_data.md",
+                    "gap_modes_procedures.md"
+                ]
+            },
+            "gatt": {
+                "_files": [
+                    "caching_robustness.md",
+                    "gatt_attribuite-IO交互.md",
+                    "gatt_overview.md",
+                    "service_discovery.md"
+                ]
+            },
+            "l2cap": {
+                "_files": [
+                    "l2cap_general_operation.md",
+                    "l2cap_packet_formats.md"
+                ]
+            },
+            "raw": {
+                "att_raw": {
+                    "_files": [
+                        "att_concepts_raw.md",
+                        "att_pdus_raw.md"
+                    ]
+                },
+                "gap_raw": {
+                    "_files": [
+                        "gap_advertising_data_raw.md",
+                        "gap_modes_procedures_raw.md",
+                        "gap_security_raw.md"
+                    ]
+                },
+                "gatt_raw": {
+                    "_files": [
+                        "gatt_hierarchy.md"
+                    ]
+                },
+                "smp_raw": {
+                    "_files": [
+                        "smp_pairing_methods_raw.md",
+                        "smp_protocol_raw.md"
+                    ]
+                }
+            },
+            "smp": {
+                "_files": [
+                    "smp_keys_distribution.md",
+                    "smp_pairing_process.md"
+                ]
+            }
+        },
+        "vol4_hci": {
+            "_files": [
+                "hci_initialization_flow.md",
+                "hci_packet_structures.md"
+            ],
+            "hci_raw": {
+                "_files": [
+                    "hci_cmd_read_ver_raw.md",
+                    "hci_cmd_reset_raw.md",
+                    "hci_cmd_set_adv_param_raw.md",
+                    "hci_packet_formats_raw.md"
+                ]
+            }
+        },
+        "vol6_controller": {
+            "_files": [
+                "air_interface_packets.md",
+                "connection_establishment.md",
+                "isochronous_channels.md",
+                "link_layer_states.md",
+                "msc_raw_text.md"
+            ],
+            "iso_raw": {
+                "_files": [
+                    "isoal_features_raw.md",
+                    "isoal_timing_raw.md"
+                ]
+            }
+        }
+    }
+}

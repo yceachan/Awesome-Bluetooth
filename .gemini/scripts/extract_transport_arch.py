@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_A_PDF = "Bluetooth_Knowledge_Base/Vol 1 Architecture, Change History, and Conventions/Part A Architecture/source.pdf"
+PART_A_PDF = "Docs/Bt-core/chunk/Vol 1 Architecture, Change History, and Conventions/Part A Architecture/source.pdf"
 OUTPUT_FILE = "notebook/vol1_architecture/transport_hierarchy.md"
 
 # Range in Part A PDF (based on original pages 253-267)

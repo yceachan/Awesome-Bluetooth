@@ -10,11 +10,14 @@
 
 在 USB/HID 协议中，设备不直接发送 "A" 或 "B"，而是发送一串二进制数据（Payload）。**Report Descriptor** 就是一本“字典”，它必须在一切开始前被定义好，告诉主机如何翻译这串二进制数据。
 
-它是 HID 开发的灵魂，是一种基于 Item 的紧凑字节码语言。
+它是 HID 开发的灵魂，是一种基于 Item 的紧凑字节码语言描述。
 > **深度指南**: [hid_report_map_guide](hid_report_map_guide.md)
-### 1.1 标准键盘 (Boot Keyboard) 及其字节码解析
+### 1.1 标准键盘 (Boot Keyboard) Report Desc字节码解析
 这是最兼容的 8 字节结构，也是 BIOS 的最小系统环境下 HID 设备能通用的基础：
+- report 报文，经典 8bytes 结构：
 `[Modifier] [Reserved] [Key1] [Key2] [Key3] [Key4] [Key5] [Key6]`
+
+- hid设备初始化时，需要上报的Desc描述符：
 
 ```c
 // 标准 8 字节键盘描述符解析
@@ -72,6 +75,11 @@
 ```
 
 ### 1.3 组合设备与 Report ID
+> [重要] ：如果hid设备需要使用多种 report 格式，每个report packet 始终需要`前导字节 report id` ; 描述符字节码里，也需要为每种report添加`report id` 行，以示区分.
+> [REF] :
+> [[02_Descriptors/00_hid_report_desc_guide]]
+> [[02_Descriptors/02_Consumer_and_SC_AC_keys]]
+
 多媒体键（音量、播放）属于 **Consumer Page (0x0C)**。为了在一个设备中传输不同类型的数据，我们引入 **Report ID**。
 *   Report ID 1: 键盘数据 (Boot Keyboard)
 *   Report ID 2: 多媒体数据 (Consumer Control)

@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_G_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part G Generic Attribute Profile (GATT)/source.pdf"
+PART_G_PDF = "Docs/Bt-core/chunk/Vol 3 Host/Part G Generic Attribute Profile (GATT)/source.pdf"
 # Updated output path to follow the raw paradigm
 DIR_OUT = "notebook/vol3_host/raw/gatt_raw"
 

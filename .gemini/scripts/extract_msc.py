@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_D_PDF = "Bluetooth_Knowledge_Base/Vol 6 Low Energy Controller/Part D Message Sequence Charts/source.pdf"
+PART_D_PDF = "Docs/Bt-core/chunk/Vol 6 Low Energy Controller/Part D Message Sequence Charts/source.pdf"
 DIR_OUT = "notebook/vol6_controller"
 
 # Relative pages (Original - 3559)

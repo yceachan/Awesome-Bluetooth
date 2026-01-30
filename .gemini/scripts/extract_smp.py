@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_H_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part H Security Manager Specification/source.pdf"
+PART_H_PDF = "Docs/Bt-core/chunk/Vol 3 Host/Part H Security Manager Specification/source.pdf"
 DIR_OUT = "notebook/vol3_host/raw/smp_raw"
 
 # Base Page: 1630

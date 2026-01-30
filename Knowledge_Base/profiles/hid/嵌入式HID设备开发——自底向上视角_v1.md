@@ -85,7 +85,7 @@ if (memcmp(current_key_buffer, previous_key_buffer, 8) != 0) {
 数据从“业务逻辑”进入“蓝牙世界”的入口。
 
 ### 2.1 HOGP 服务构建
-固件必须按照 [HOGP 架构](hogp_architecture.md) 初始化 GATT 服务表格。
+固件必须按照 [HOGP 架构](00_HGOP/hogp_architecture.md) 初始化 GATT 服务表格。
 *   **Report Characteristic**: 这是数据的出口。
 *   **CCCD (Client Characteristic Configuration Descriptor)**: 这是开关。
     *   **重要**: 在 Host 向 CCCD 写入 `0x0001` (Enable Notification) 之前，**严禁**调用发送函数。

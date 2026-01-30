@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_E_PDF = "Bluetooth_Knowledge_Base/Vol 4 Host Controller Interface/Part E Host Controller Interface Functional Specification/source.pdf"
+PART_E_PDF = "Docs/Bt-core/chunk/Vol 4 Host Controller Interface/Part E Host Controller Interface Functional Specification/source.pdf"
 DIR_OUT = "notebook/vol4_hci/hci_raw"
 
 # Base Page: 1802

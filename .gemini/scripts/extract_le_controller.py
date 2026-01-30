@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_B_PDF = "Bluetooth_Knowledge_Base/Vol 6 Low Energy Controller/Part B Link Layer Specification/source.pdf"
+PART_B_PDF = "Docs/Bt-core/chunk/Vol 6 Low Energy Controller/Part B Link Layer Specification/source.pdf"
 DIR_OUT = "notebook/vol6_controller"
 
 # 相对页码 = 原始页码 - 2944

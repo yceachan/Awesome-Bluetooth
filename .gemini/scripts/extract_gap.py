@@ -1,7 +1,7 @@
 import pdfplumber
 import os
 
-PART_C_PDF = "Bluetooth_Knowledge_Base/Vol 3 Host/Part C Generic Access Profile/source.pdf"
+PART_C_PDF = "Docs/Bt-core/chunk/Vol 3 Host/Part C Generic Access Profile/source.pdf"
 DIR_OUT = "notebook/vol3_host/raw/gap_raw"
 
 # Base Page: 1315

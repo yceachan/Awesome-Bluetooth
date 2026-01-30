@@ -11,12 +11,13 @@
 
 本项目将庞大的 PDF 规范解构为三个层级：
 
-1.  **源数据层 (`Bluetooth_Knowledge_Base/`)**: 
+1.  **源数据层 (`Docs/<spec>/chunk`)**: 
     *   基于 Vol/Part 结构切分后的 PDF 原文。
     *   *Agent 须知*: 严禁全量读取原始大文件。读取时必须通过索引找到对应的 `source.pdf`。
-2.  **知识层 (`notebook/`)**: 
+2.  **知识层 (`Knowledge_Base/`)**: 
     *   经过治理、提炼、结构化的 Markdown 笔记。
     *   包含 Mermaid 图表、核心概念解析、协议交互流程。
+    *   `index.json` : py脚本维护的知识库索引
 3.  **工具层 (`.gemini/scripts/`)**: 
     *   用于自动化处理 PDF、提取文本、验证数据的 Python 脚本库。
 
@@ -24,7 +25,9 @@
 
 ## 2. 工具库清单 (Toolbox & Scripts)
 
-新会话开始时，请优先使用以下脚本进行自动化操作。所有脚本均位于 `.gemini/scripts/`。
+新会话开始时，优先使用如下先前治理过程中固化的可用脚本，path： `.gemini/scripts/`。
+
+e.g.:包括不限于如下script：
 
 | 脚本名 | 功能描述 | 典型用法 |
 | :--- | :--- | :--- |
@@ -46,35 +49,35 @@
 
 ### ✅ 已完成 (Done)
 *   **Vol 0 Overview**:
-    *   `notebook/overview/README.md`: 协议栈宏观架构、OSI 映射、Mermaid 架构图。
+    *   `Knowledge_Base/overview/README.md`: 协议栈宏观架构、OSI 映射、Mermaid 架构图。
 *   **Vol 1 Architecture**:
-    *   `notebook/vol1_architecture/transport_hierarchy.md`: 物理信道 -> 逻辑链路 -> L2CAP 的层级映射。
+    *   `Knowledge_Base/vol1_architecture/transport_hierarchy.md`: 物理信道 -> 逻辑链路 -> L2CAP 的层级映射。
 *   **Vol 3 Host**:
-    *   `notebook/vol3_host/l2cap/l2cap_general_operation.md`: CID 分配、Basic/FlowControl/LE-Credit 模式。
-    *   `notebook/vol3_host/l2cap/l2cap_packet_formats.md`: B-Frame, K-Frame 结构。
-    *   `notebook/vol3_host/att/att_pdu_formats.md`: PDU 结构 (Error, Write, Notify) 与事务规则。
-    *   `notebook/vol3_host/gatt/gatt_overview.md`: Client/Server 角色, Attribute 结构。
-    *   `notebook/vol3_host/gatt/service_discovery.md`: 发现服务与特征的详细子过程 (Sub-procedures)。
-    *   `notebook/vol3_host/gatt/caching_robustness.md`: GATT Caching, Database Hash 与 HOGP 秒连机制。
-    *   `notebook/vol3_host/gap/gap_advertising_data.md`: 广播数据格式 (Flags, Local Name, UUIDs)。
-    *   `notebook/vol3_host/gap/gap_modes_procedures.md`: 发现模式、连接模式与角色定义。
-    *   `notebook/vol3_host/smp/smp_pairing_process.md`: 配对流程 (Phase 1-3)。
-    *   `notebook/vol3_host/smp/smp_keys_distribution.md`: 密钥类型与分发。
+    *   `Knowledge_Base/vol3_host/l2cap/l2cap_general_operation.md`: CID 分配、Basic/FlowControl/LE-Credit 模式。
+    *   `Knowledge_Base/vol3_host/l2cap/l2cap_packet_formats.md`: B-Frame, K-Frame 结构。
+    *   `Knowledge_Base/vol3_host/att/att_pdu_formats.md`: PDU 结构 (Error, Write, Notify) 与事务规则。
+    *   `Knowledge_Base/vol3_host/gatt/gatt_overview.md`: Client/Server 角色, Attribute 结构。
+    *   `Knowledge_Base/vol3_host/gatt/service_discovery.md`: 发现服务与特征的详细子过程 (Sub-procedures)。
+    *   `Knowledge_Base/vol3_host/gatt/caching_robustness.md`: GATT Caching, Database Hash 与 HOGP 秒连机制。
+    *   `Knowledge_Base/vol3_host/gap/gap_advertising_data.md`: 广播数据格式 (Flags, Local Name, UUIDs)。
+    *   `Knowledge_Base/vol3_host/gap/gap_modes_procedures.md`: 发现模式、连接模式与角色定义。
+    *   `Knowledge_Base/vol3_host/smp/smp_pairing_process.md`: 配对流程 (Phase 1-3)。
+    *   `Knowledge_Base/vol3_host/smp/smp_keys_distribution.md`: 密钥类型与分发。
 *   **Vol 4 HCI**:
-    *   `notebook/vol4_hci/hci_packet_structures.md`: Command, Event, ACL/ISO Data 包结构与 H4 协议。
-    *   `notebook/vol4_hci/hci_initialization_flow.md`: 初始化流程与核心命令映射。
+    *   `Knowledge_Base/vol4_hci/hci_packet_structures.md`: Command, Event, ACL/ISO Data 包结构与 H4 协议。
+    *   `Knowledge_Base/vol4_hci/hci_initialization_flow.md`: 初始化流程与核心命令映射。
 *   **Vol 6 LE Controller**:
-    *   `notebook/vol6_controller/link_layer_states.md`: 7 种 LL 状态机 (Standby, Adv, Conn, etc.)。
-    *   `notebook/vol6_controller/air_interface_packets.md`: Uncoded/Coded PHY 包格式, PDU Header。
-    *   `notebook/vol6_controller/connection_establishment.md`: 广播与连接建立的详细 Mermaid 时序图。
-    *   `notebook/vol6_controller/isochronous_channels.md`: CIS/BIS 与 ISOAL 机制 (LE Audio)。
+    *   `Knowledge_Base/vol6_controller/link_layer_states.md`: 7 种 LL 状态机 (Standby, Adv, Conn, etc.)。
+    *   `Knowledge_Base/vol6_controller/air_interface_packets.md`: Uncoded/Coded PHY 包格式, PDU Header。
+    *   `Knowledge_Base/vol6_controller/connection_establishment.md`: 广播与连接建立的详细 Mermaid 时序图。
+    *   `Knowledge_Base/vol6_controller/isochronous_channels.md`: CIS/BIS 与 ISOAL 机制 (LE Audio)。
 *   **Profiles (Application Layer)**:
-    *   `notebook/profiles/hid/hogp_architecture.md`: HOGP 架构与服务依赖。
-    *   `notebook/profiles/hid/hid_report_map_guide.md`: Report Descriptor 实战与字节码解析。
-    *   `notebook/profiles/hid/hid_device_development.md`: 嵌入式开发指南 (扫描、上报、功耗)。
-    *   `notebook/profiles/hid/hid_to_RF_packet_flow.md`: 全栈数据流解构 (HID -> ATT -> L2CAP -> LL -> RF)。
-    *   `notebook/profiles/hid/hogp_initialization_packet_flow.md`: HOGP 初始化配置 (UUID -> Handle 映射)。
-    *   `notebook/profiles/hid/gap_role_in_hogp.md`: GAP 在 HOGP 中的角色 (广播、配对触发、回连)。
+    *   `Knowledge_Base/profiles/hid/hogp_architecture.md`: HOGP 架构与服务依赖。
+    *   `Knowledge_Base/profiles/hid/hid_report_map_guide.md`: Report Descriptor 实战与字节码解析。
+    *   `Knowledge_Base/profiles/hid/hid_device_development.md`: 嵌入式开发指南 (扫描、上报、功耗)。
+    *   `Knowledge_Base/profiles/hid/hid_to_RF_packet_flow.md`: 全栈数据流解构 (HID -> ATT -> L2CAP -> LL -> RF)。
+    *   `Knowledge_Base/profiles/hid/hogp_initialization_packet_flow.md`: HOGP 初始化配置 (UUID -> Handle 映射)。
+    *   `Knowledge_Base/profiles/hid/gap_role_in_hogp.md`: GAP 在 HOGP 中的角色 (广播、配对触发、回连)。
 
 ### ⏳ 待办 (To-Do)
 *   **SMP Deep Dive**: Legacy vs LE Secure Connections, Pairing Phases 1-3, Key Distribution details.
@@ -88,23 +91,33 @@
 
 在新会话中治理新章节时，请遵循以下步骤：
 
-1.  **定位资源**:
-    *   查阅根目录下的 `Bluetooth_Core_v6.2_Index.md` 或读取 `Bluetooth_Knowledge_Base/` 目录结构，找到目标 Part 的 `source.pdf` 路径。
-    *   读取该 Part 目录下的 `README.md`，获取精确的**内部页码 (Internal Page Numbers)** 索引。
+（以bt-core文档为案例演示，其他大文档as so）
 
-2.  **提取内容**:
-    *   **不要**试图一次性读取整个 PDF。
-    *   复制并修改 `.gemini/scripts/extract_template.py` (或参考现有的 `extract_gatt.py`)。
-    *   设置准确的 `Page Range`。
-    *   运行脚本将原始文本提取到 `notebook/xxx/xxx_raw.md` 或直接生成目标文件。
+0. (开发者任务，do once)：
+   - 使用`.gemini/script/threaded_split_pdf.py`的脚本范式，chunk大文档。
 
-3.  **知识重构**:
-    *   读取提取的原始文本。
-    *   使用 Markdown 重写，要求：
-        *   **结构清晰**: 使用 H1/H2/H3 标题。
-        *   **中文输出**: 翻译并解释核心概念，但保留英文术语 (如 "Advertising Interval")。
-        *   **图表化**: 遇到流程、状态机、层级结构，必须使用 **Mermaid** 绘制。
-        *   **表格化**: 遇到参数列表、PDU 结构，使用 Markdown 表格。
+1. **定位资源**:
 
-4.  **文件归档**:
-    *   将治理好的文件保存在 `notebook/` 下对应的分类目录中。
+   *   查阅`Docs/Bt-core/Bluetooth_Core_v6.2_Index.md` 或读取 `Docs/Bt-core/chunk/` 目录结构，找到目标 Part 的 `source.pdf` 路径。
+   *   读取该 Part 目录下的 `README.md`，获取精确的**内部页码 (Internal Page Numbers)** 索引。
+
+2. **提取内容**:
+
+   - 充分利用 pdf skill
+
+   *   **不要**试图一次性读取整个 PDF。
+   *   复制并修改 `.gemini/scripts/extract_template.py` (或参考现有的 `extract_gatt.py`)。
+   *   设置准确的 `Page Range`。
+   *   运行脚本将原始文本提取到 `Knowledge_Base/xxx/xxx_raw.md` 或直接生成目标文件。
+
+3. **知识重构**:
+   *   读取提取的原始文本。
+   *   使用 Markdown 重写，要求：
+       *   **结构清晰**: 使用 H1/H2/H3 标题。
+       *   **中文输出**: 翻译并解释核心概念，但保留英文术语 (如 "Advertising Interval")。
+       *   **图表化**: 遇到流程、状态机、层级结构，必须使用 **Mermaid Skill** 绘制。
+       *   **Mermaid自检** : 根据mermiad skill 的prompt ，检查验证语法错误，保证输出graph能正常渲染。
+       *   **表格化**: 遇到参数列表、PDU 结构，使用 Markdown 表格。
+
+4. **文件归档**:
+   *   将治理好的文件保存在 `Knowledge_Base/` 下对应的分类目录中。
