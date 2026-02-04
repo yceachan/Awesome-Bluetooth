@@ -12,12 +12,12 @@
 
 ### 1.1 核心 Usage ID (Page 0x01)
 
-| Usage ID (Hex) | Name | Type | 描述 |
-| :--- | :--- | :--- | :--- |
-| `81` | **System Power Down** | OSC | 关机。触发操作系统的关机流程。 |
-| `82` | **System Sleep** | OSC | 睡眠/待机。 |
-| `83` | **System Wake Up** | OSC | 唤醒。 |
-| `8F` | **System Cold Restart** | OSC | 冷重启（较少用）。 |
+| Usage ID (Hex) | Name                    | Type | 描述              |
+| :------------- | :---------------------- | :--- | :-------------- |
+| `81`           | **System Power Down**   | OSC  | 关机。触发操作系统的关机流程。 |
+| `82`           | **System Sleep**        | OSC  | 睡眠/待机。          |
+| `83`           | **System Wake Up**      | OSC  | 唤醒。             |
+| `8F`           | **System Cold Restart** | OSC  | 冷重启（较少用）。       |
 
 ### 1.2 推荐实现方案 (独立 Report ID)
 

@@ -105,7 +105,7 @@ def main():
     print(f"Scanning {NOTEBOOK_DIR}...")
     
     # 1. Header Content
-    header = f"""# BlueGemini Bluetooth Protocol Stack Knowledge Base
+    header = f"""# Embedded Aimed Bluetooth Protocol Stack Knowledge Base
 
 > **Auto-Generated Index**
 > *Last Updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
@@ -141,9 +141,6 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
 - **索引治理**:
   - `generate_root_index.py`: (本脚本) 自动扫描 `Knowledge_Base` 并重建根目录 `README.md` 导航树。
   - `generate_kb_index.py`: 为 Agent 生成结构化的 `index.json`，提升机器检索效率。
-- **PDF 提取**: `optimized_split_pdf.py`, `extract_gatt.py`, `extract_hid_core.py` 等。
-- **质量校验**: `validate_kb_pdfs.py` (检查 PDF 完整性), `recover_kb.py` (知识库恢复)。
-
 ---
 
 ## 📜 License & Copyright

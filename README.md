@@ -1,7 +1,7 @@
-# BlueGemini Bluetooth Protocol Stack Knowledge Base
+# Embedded Aimed Bluetooth Protocol Stack Knowledge Base
 
 > **Auto-Generated Index**
-> *Last Updated: 2026-01-31 19:24:14*
+> *Last Updated: 2026-02-02 13:57:00*
 
 Based on `Bluetooth Core Specification v6.2` and `HOGP v1.1`.
 This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill for accurate specification extraction.
@@ -23,16 +23,16 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
       - [HOGP 初始化中的 ATT 报文交换详解](Knowledge_Base/profiles/hid/00_HGOP/hogp_att_packet_exchange_deep_dive.md)
       - [HOGP 设备完整初始化流程：从广播到可用](Knowledge_Base/profiles/hid/00_HGOP/hogp_device_initialization_flow.md)
       - [HOGP 初始化与配置：ATT 报文全解析](Knowledge_Base/profiles/hid/00_HGOP/hogp_initialization_packet_flow.md)
-    - **02 Descriptors/** 
-      - [HID Report Descriptor 实战指南](Knowledge_Base/profiles/hid/02_Descriptors/00_hid_report_desc_guide.md)
-      - [标准键盘 HID Usage Map (Page 0x07)](Knowledge_Base/profiles/hid/02_Descriptors/01_standard_keyboard_usage_map.md)
-      - [进阶 HID 多媒体与系统键开发指南](Knowledge_Base/profiles/hid/02_Descriptors/02_Consumer_and_SC_AC_keys.md)
-    - **03 App Notes/** 
-      - [Hid Kb Long Pressed情景分析](Knowledge_Base/profiles/hid/03_App_notes/hid-kb-long_pressed情景分析.md)
-      - [HID 多媒体键实现指南](Knowledge_Base/profiles/hid/03_App_notes/multimedia_keys_implementation.md)
-      - [机械键盘全键无冲 (NKRO) 实现指南](Knowledge_Base/profiles/hid/03_App_notes/nkro_implementation_guide.md)
-    - **04 Kernel Os/** 
-      - [Linux Kernel HID Subsystem: 补充阅读与实战指南](Knowledge_Base/profiles/hid/04_Kernel_OS/Addt-kernel-hid-wiki.md)
+    - **01 Descriptors/** 
+      - [HID Report Descriptor 实战指南](Knowledge_Base/profiles/hid/01_Descriptors/00_hid_report_desc_guide.md)
+      - [标准键盘 HID Usage Map (Page 0x07)](Knowledge_Base/profiles/hid/01_Descriptors/01_standard_keyboard_usage_map.md)
+      - [进阶 HID 多媒体与系统键开发指南](Knowledge_Base/profiles/hid/01_Descriptors/02_Consumer_and_SC_AC_keys.md)
+    - **02 App Notes/** 
+      - [Hid Kb Long Pressed情景分析](Knowledge_Base/profiles/hid/02_App_notes/hid-kb-long_pressed情景分析.md)
+      - [HID 多媒体键实现指南](Knowledge_Base/profiles/hid/02_App_notes/multimedia_keys_implementation.md)
+      - [机械键盘全键无冲 (NKRO) 实现指南](Knowledge_Base/profiles/hid/02_App_notes/nkro_implementation_guide.md)
+    - **03 Kernel Os/** 
+      - [Linux Kernel HID Subsystem: 补充阅读与实战指南](Knowledge_Base/profiles/hid/03_Kernel_OS/Addt-kernel-hid-wiki.md)
 - **Vol1 Architecture/** 
   - [蓝牙传输架构层级 (Transport Architecture Hierarchy)](Knowledge_Base/vol1_architecture/transport_hierarchy.md)
 - **Vol3 Host/** : *蓝牙主机（Host）协议栈位于 HCI 层之上，负责处理逻辑链路、安全、属性管理以及应用程序的通用访问。*
@@ -86,9 +86,6 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
 - **索引治理**:
   - `generate_root_index.py`: (本脚本) 自动扫描 `Knowledge_Base` 并重建根目录 `README.md` 导航树。
   - `generate_kb_index.py`: 为 Agent 生成结构化的 `index.json`，提升机器检索效率。
-- **PDF 提取**: `optimized_split_pdf.py`, `extract_gatt.py`, `extract_hid_core.py` 等。
-- **质量校验**: `validate_kb_pdfs.py` (检查 PDF 完整性), `recover_kb.py` (知识库恢复)。
-
 ---
 
 ## 📜 License & Copyright

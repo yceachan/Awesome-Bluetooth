@@ -18,22 +18,21 @@
                         "hogp_initialization_packet_flow.md"
                     ]
                 },
-                "01_Specifications": {},
-                "02_Descriptors": {
+                "01_Descriptors": {
                     "_files": [
                         "00_hid_report_desc_guide.md",
                         "01_standard_keyboard_usage_map.md",
                         "02_Consumer_and_SC_AC_keys.md"
                     ]
                 },
-                "03_App_notes": {
+                "02_App_notes": {
                     "_files": [
                         "hid-kb-long_pressed情景分析.md",
                         "multimedia_keys_implementation.md",
                         "nkro_implementation_guide.md"
                     ]
                 },
-                "04_Kernel_OS": {
+                "03_Kernel_OS": {
                     "_files": [
                         "Addt-kernel-hid-wiki.md"
                     ]
@@ -42,15 +41,7 @@
                     "嵌入式HID设备开发——自底向上视角_v0.md",
                     "嵌入式HID设备开发——自底向上视角_v1.md",
                     "嵌入式HID设备开发——自底向上视角_v2.md"
-                ],
-                "data": {
-                    "_files": [
-                        "consumer_media_raw.md",
-                        "consumer_media_usage_table_raw.md",
-                        "keyboard_usage_table_raw.md",
-                        "ref_keyboard_usage_map.md"
-                    ]
-                }
+                ]
             }
         },
         "vol1_architecture": {
