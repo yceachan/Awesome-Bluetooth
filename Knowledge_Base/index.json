@@ -19,6 +19,17 @@
                     ]
                 },
                 "01_Descriptors": {
+                    "Map": {
+                        "_files": [
+                            "Consumer_Usage_Map.md",
+                            "GenericDesktop_Usage_Map.md",
+                            "ISO-IEC 9995物理键位命名方案.md",
+                            "LED_Usage_Map.md",
+                            "Multimedia_Keys_Map.md",
+                            "Page0x7-standardKey MAP.md",
+                            "Page0x7-复杂kb_ISO符号与usage对应.md"
+                        ]
+                    },
                     "_files": [
                         "00_hid_report_desc_guide.md",
                         "01_standard_keyboard_usage_map.md",
@@ -116,12 +127,36 @@
                 "hci_initialization_flow.md",
                 "hci_packet_structures.md"
             ],
+            "commands": {
+                "_files": [
+                    "hci_cmd_read_local_version_info.md",
+                    "hci_cmd_reset.md",
+                    "hci_le_set_adv_param.md"
+                ]
+            },
             "hci_raw": {
                 "_files": [
                     "hci_cmd_read_ver_raw.md",
                     "hci_cmd_reset_raw.md",
                     "hci_cmd_set_adv_param_raw.md",
                     "hci_packet_formats_raw.md"
+                ],
+                "transport_raw": {
+                    "_files": [
+                        "h2_usb_raw.md",
+                        "h4_uart_raw.md",
+                        "h5_three_wire_uart_raw.md",
+                        "sd_raw.md"
+                    ]
+                }
+            },
+            "transport": {
+                "_files": [
+                    "h2_usb_transport.md",
+                    "h4_uart_transport.md",
+                    "h5_three_wire_uart_transport.md",
+                    "hci_transport_overview.md",
+                    "sd_transport.md"
                 ]
             }
         },

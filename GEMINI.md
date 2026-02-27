@@ -66,6 +66,13 @@ e.g.:包括不限于如下script：
 *   **Vol 4 HCI**:
     *   `Knowledge_Base/vol4_hci/hci_packet_structures.md`: Command, Event, ACL/ISO Data 包结构与 H4 协议。
     *   `Knowledge_Base/vol4_hci/hci_initialization_flow.md`: 初始化流程与核心命令映射。
+    *   `Knowledge_Base/vol4_hci/transport/hci_transport_overview.md`: 传输层概览及 H2/H4/H5/SD 差异对比。
+    *   `Knowledge_Base/vol4_hci/transport/h4_uart_transport.md`: UART H4 传输层与同步复位机制。
+    *   `Knowledge_Base/vol4_hci/transport/h2_usb_transport.md`: USB H2 传输层及端点映射架构。
+    *   `Knowledge_Base/vol4_hci/transport/h5_three_wire_uart_transport.md`: H5 三线制可靠传输层与 SLIP 机制。
+    *   `Knowledge_Base/vol4_hci/commands/hci_cmd_reset.md`: HCI_Reset 控制器复位命令。
+    *   `Knowledge_Base/vol4_hci/commands/hci_cmd_read_local_version_info.md`: Read Local Version Information 命令。
+    *   `Knowledge_Base/vol4_hci/commands/hci_le_set_adv_param.md`: LE Set Advertising Parameters 命令。
 *   **Vol 6 LE Controller**:
     *   `Knowledge_Base/vol6_controller/link_layer_states.md`: 7 种 LL 状态机 (Standby, Adv, Conn, etc.)。
     *   `Knowledge_Base/vol6_controller/air_interface_packets.md`: Uncoded/Coded PHY 包格式, PDU Header。
@@ -94,7 +101,7 @@ e.g.:包括不限于如下script：
 （以bt-core文档为案例演示，其他大文档as so）
 
 0. (开发者任务，do once)：
-   - 使用`.gemini/script/threaded_split_pdf.py`的脚本范式，chunk大文档。
+    - 使用`.gemini/script/threaded_split_pdf.py`的脚本范式，chunk大文档。
 
 1. **定位资源**:
 
@@ -121,3 +128,33 @@ e.g.:包括不限于如下script：
 
 4. **文件归档**:
    *   将治理好的文件保存在 `Knowledge_Base/` 下对应的分类目录中。
+
+5. 文档规范：
+
+
+   - **Mermaid** 
+     
+     - **whenever** naming a node ,especially with chars like `/ \ () （）`,and chinese,using`""`to include the whole node name.
+       - e.g. `GpioLib["GPIO库"] -- register --> Sysfs["/sys/class/gpio"]`
+     - **SequenceDiagram**:
+       - Always include `autonumber` to clearly mark the execution sequence.
+       - When using `rect rgb(...)` blocks, the background color must maintain **High Brightness** (each RGB component > 200) to ensure high contrast and readability for black text on light backgrounds.
+
+   - 中文知识输出：
+     - 最终结论和文档输出必须使用中文，同时保留专业英文术语
+     - 高价值的知识输出始终应固化在文件系统而非上下文缓存，当开发者未明确指示路径，Agent应智能判断一个适合的路径，并提出写入建议。
+     
+   - Reference:
+
+     - always respective source of truth , if Agent refer then ,mark it  below the 1st H1 Title :
+
+       - not only web wiki , **but also local code、note、docs。**
+       
+       - ```md
+         # H1 Title
+         
+         > [!note]
+         > **Ref:** [wiki](url)
+         
+         text...
+         ```
