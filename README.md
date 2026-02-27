@@ -1,7 +1,7 @@
 # Embedded Aimed Bluetooth Protocol Stack Knowledge Base
 
 > **Auto-Generated Index**
-> *Last Updated: 2026-02-02 13:57:00*
+> *Last Updated: 2026-02-27 12:29:46*
 
 Based on `Bluetooth Core Specification v6.2` and `HOGP v1.1`.
 This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill for accurate specification extraction.
@@ -27,12 +27,26 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
       - [HID Report Descriptor 实战指南](Knowledge_Base/profiles/hid/01_Descriptors/00_hid_report_desc_guide.md)
       - [标准键盘 HID Usage Map (Page 0x07)](Knowledge_Base/profiles/hid/01_Descriptors/01_standard_keyboard_usage_map.md)
       - [进阶 HID 多媒体与系统键开发指南](Knowledge_Base/profiles/hid/01_Descriptors/02_Consumer_and_SC_AC_keys.md)
+      - **Map/** 
+        - [Consumer Page (0x0C)](Knowledge_Base/profiles/hid/01_Descriptors/Map/Consumer_Usage_Map.md)
+        - [Generic Desktop Page (0x01)](Knowledge_Base/profiles/hid/01_Descriptors/Map/GenericDesktop_Usage_Map.md)
+        - [International Physical Key Naming & HID Mapping](Knowledge_Base/profiles/hid/01_Descriptors/Map/ISO-IEC 9995物理键位命名方案.md)
+        - [LED Page (0x08)](Knowledge_Base/profiles/hid/01_Descriptors/Map/LED_Usage_Map.md)
+        - [Multimedia & Special Keys Usage Map](Knowledge_Base/profiles/hid/01_Descriptors/Map/Multimedia_Keys_Map.md)
+        - [Keyboard/Keypad Page (0x07)](Knowledge_Base/profiles/hid/01_Descriptors/Map/Page0x7-standardKey MAP.md)
+        - [复杂 KB ISO 符号与 Usage 对应指南](Knowledge_Base/profiles/hid/01_Descriptors/Map/Page0x7-复杂kb_ISO符号与usage对应.md)
     - **02 App Notes/** 
       - [Hid Kb Long Pressed情景分析](Knowledge_Base/profiles/hid/02_App_notes/hid-kb-long_pressed情景分析.md)
       - [HID 多媒体键实现指南](Knowledge_Base/profiles/hid/02_App_notes/multimedia_keys_implementation.md)
       - [机械键盘全键无冲 (NKRO) 实现指南](Knowledge_Base/profiles/hid/02_App_notes/nkro_implementation_guide.md)
     - **03 Kernel Os/** 
       - [Linux Kernel HID Subsystem: 补充阅读与实战指南](Knowledge_Base/profiles/hid/03_Kernel_OS/Addt-kernel-hid-wiki.md)
+  - **Le Audio/** : *> [!note]*
+    - **Codec/** 
+      - [LC3 编解码器概览 (Low Complexity Communication Codec)](Knowledge_Base/profiles/le_audio/codec/lc3_overview.md)
+      - [LC3 技术细节与处理流程](Knowledge_Base/profiles/le_audio/codec/lc3_technical_details.md)
+    - **Overview/** 
+      - [BAP 架构与角色 (Basic Audio Profile)](Knowledge_Base/profiles/le_audio/overview/bap_architecture.md)
 - **Vol1 Architecture/** 
   - [蓝牙传输架构层级 (Transport Architecture Hierarchy)](Knowledge_Base/vol1_architecture/transport_hierarchy.md)
 - **Vol3 Host/** : *蓝牙主机（Host）协议栈位于 HCI 层之上，负责处理逻辑链路、安全、属性管理以及应用程序的通用访问。*
@@ -55,11 +69,26 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
 - **Vol4 Hci/** 
   - [HCI Initialization & Command Flow (初始化与核心流程)](Knowledge_Base/vol4_hci/hci_initialization_flow.md)
   - [HCI Packet Structures (HCI 包结构详解)](Knowledge_Base/vol4_hci/hci_packet_structures.md)
+  - **Commands/** 
+    - [HCI Command: Read Local Version Information](Knowledge_Base/vol4_hci/commands/hci_cmd_read_local_version_info.md)
+    - [HCI Command: Reset](Knowledge_Base/vol4_hci/commands/hci_cmd_reset.md)
+    - [HCI Command: LE Set Advertising Parameters](Knowledge_Base/vol4_hci/commands/hci_le_set_adv_param.md)
   - **Hci Raw/** 
     - [HCI Command: Read Local Version](Knowledge_Base/vol4_hci/hci_raw/hci_cmd_read_ver_raw.md)
     - [HCI Command: Reset](Knowledge_Base/vol4_hci/hci_raw/hci_cmd_reset_raw.md)
     - [HCI Command: LE Set Adv Params](Knowledge_Base/vol4_hci/hci_raw/hci_cmd_set_adv_param_raw.md)
     - [HCI Packet Formats (Command, Event, ACL)](Knowledge_Base/vol4_hci/hci_raw/hci_packet_formats_raw.md)
+    - **Transport Raw/** 
+      - [Part B USB Transport Layer (H2)](Knowledge_Base/vol4_hci/hci_raw/transport_raw/h2_usb_raw.md)
+      - [Part A UART Transport Layer (H4)](Knowledge_Base/vol4_hci/hci_raw/transport_raw/h4_uart_raw.md)
+      - [Part D Three-wire UART Transport Layer (H5)](Knowledge_Base/vol4_hci/hci_raw/transport_raw/h5_three_wire_uart_raw.md)
+      - [Part C Secure Digital (SD) Transport Layer](Knowledge_Base/vol4_hci/hci_raw/transport_raw/sd_raw.md)
+  - **Transport/** 
+    - [HCI USB Transport Layer (H2)](Knowledge_Base/vol4_hci/transport/h2_usb_transport.md)
+    - [HCI UART Transport Layer (H4)](Knowledge_Base/vol4_hci/transport/h4_uart_transport.md)
+    - [HCI Three-wire UART Transport Layer (H5)](Knowledge_Base/vol4_hci/transport/h5_three_wire_uart_transport.md)
+    - [HCI 传输层 (Transport Layers) 概览](Knowledge_Base/vol4_hci/transport/hci_transport_overview.md)
+    - [HCI Secure Digital (SD) Transport Layer](Knowledge_Base/vol4_hci/transport/sd_transport.md)
 - **Vol6 Controller/** 
   - [BLE 空口包格式 (Air Interface Packets)](Knowledge_Base/vol6_controller/air_interface_packets.md)
   - [BLE 连接建立流程 (Connection Establishment Flow)](Knowledge_Base/vol6_controller/connection_establishment.md)

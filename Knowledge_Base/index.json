@@ -53,6 +53,23 @@
                     "嵌入式HID设备开发——自底向上视角_v1.md",
                     "嵌入式HID设备开发——自底向上视角_v2.md"
                 ]
+            },
+            "le_audio": {
+                "_files": [
+                    "README.md"
+                ],
+                "codec": {
+                    "_files": [
+                        "lc3_overview.md",
+                        "lc3_technical_details.md"
+                    ]
+                },
+                "overview": {
+                    "_files": [
+                        "bap_architecture.md"
+                    ]
+                },
+                "raw": {}
             }
         },
         "vol1_architecture": {

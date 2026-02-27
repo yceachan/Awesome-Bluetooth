@@ -1,0 +1,20 @@
+/*!
+Theme Name: Kadence Bluetooth
+Theme URI: https://www.kadencewp.com/kadence-theme/
+Template: kadence
+Author: Jordan Crown
+Author URI: https://www.jordancrown.com/
+Description: A child theme for the Kadence Theme built specifically for Bluetooth.
+Version: 1.0.0
+License: GNU General Public License v3.0 (or later)
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: kadence-bluetooth
+*/
+
+
+/* @media screen and (max-width: 719px) {
+	.content-style-boxed .content-bg:not(.loop-entry) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+} */
