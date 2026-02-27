@@ -69,7 +69,12 @@
                         "bap_architecture.md"
                     ]
                 },
-                "raw": {}
+                "raw": {},
+                "unicast": {
+                    "_files": [
+                        "ascs_ase_control_operations.md"
+                    ]
+                }
             }
         },
         "vol1_architecture": {

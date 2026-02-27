@@ -1,7 +1,7 @@
 # Embedded Aimed Bluetooth Protocol Stack Knowledge Base
 
 > **Auto-Generated Index**
-> *Last Updated: 2026-02-27 12:29:46*
+> *Last Updated: 2026-02-27 12:41:44*
 
 Based on `Bluetooth Core Specification v6.2` and `HOGP v1.1`.
 This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill for accurate specification extraction.
@@ -47,6 +47,8 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
       - [LC3 技术细节与处理流程](Knowledge_Base/profiles/le_audio/codec/lc3_technical_details.md)
     - **Overview/** 
       - [BAP 架构与角色 (Basic Audio Profile)](Knowledge_Base/profiles/le_audio/overview/bap_architecture.md)
+    - **Unicast/** 
+      - [BAP 单播音频流控制 (ASE Control Operations)](Knowledge_Base/profiles/le_audio/unicast/ascs_ase_control_operations.md)
 - **Vol1 Architecture/** 
   - [蓝牙传输架构层级 (Transport Architecture Hierarchy)](Knowledge_Base/vol1_architecture/transport_hierarchy.md)
 - **Vol3 Host/** : *蓝牙主机（Host）协议栈位于 HCI 层之上，负责处理逻辑链路、安全、属性管理以及应用程序的通用访问。*

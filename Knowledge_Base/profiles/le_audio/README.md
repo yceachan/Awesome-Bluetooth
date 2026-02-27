@@ -29,6 +29,13 @@ LE Audio 是基于蓝牙低功耗 (Bluetooth Low Energy) 的下一代音频标�
 | **CAP/CAS** | `Docs/LE-Audio/Common Audio Service ... .html` | 🟡 HTML版 | 待分析 |
 | **Core (ISOC)** | `Docs/Bt-core/` | 🟢 已分片 | 已在 Vol 6 涉及 |
 
+## 2.1 结构化文档索引
+
+- [Codec] `codec/lc3_overview.md`: LC3 编解码器核心特性、延迟与采样率映射。
+- [Codec] `codec/lc3_technical_details.md`: LC3 编码器高层架构、MDCT/SNS/TNS 模块解析。
+- [Architecture] `overview/bap_architecture.md`: BAP 角色定义 (Unicast/Broadcast) 与 ASCS 状态机。
+- [Unicast] `unicast/ascs_ase_control_operations.md`: ASCS 的 ASE 控制指令详解 (Config Codec, Config QoS, Enable, Disable, Release)。
+
 ---
 
 ## 3. 核心概念 (Key Concepts)
