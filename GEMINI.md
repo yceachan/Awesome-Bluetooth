@@ -48,47 +48,17 @@ e.g.:包括不限于如下script：
 *最后更新: 2026-01-23*
 
 ### ✅ 已完成 (Done)
-*   **Vol 0 Overview**:
-    *   `Knowledge_Base/overview/README.md`: 协议栈宏观架构、OSI 映射、Mermaid 架构图。
-*   **Vol 1 Architecture**:
-    *   `Knowledge_Base/vol1_architecture/transport_hierarchy.md`: 物理信道 -> 逻辑链路 -> L2CAP 的层级映射。
-*   **Vol 3 Host**:
-    *   `Knowledge_Base/vol3_host/l2cap/l2cap_general_operation.md`: CID 分配、Basic/FlowControl/LE-Credit 模式。
-    *   `Knowledge_Base/vol3_host/l2cap/l2cap_packet_formats.md`: B-Frame, K-Frame 结构。
-    *   `Knowledge_Base/vol3_host/att/att_pdu_formats.md`: PDU 结构 (Error, Write, Notify) 与事务规则。
-    *   `Knowledge_Base/vol3_host/gatt/gatt_overview.md`: Client/Server 角色, Attribute 结构。
-    *   `Knowledge_Base/vol3_host/gatt/service_discovery.md`: 发现服务与特征的详细子过程 (Sub-procedures)。
-    *   `Knowledge_Base/vol3_host/gatt/caching_robustness.md`: GATT Caching, Database Hash 与 HOGP 秒连机制。
-    *   `Knowledge_Base/vol3_host/gap/gap_advertising_data.md`: 广播数据格式 (Flags, Local Name, UUIDs)。
-    *   `Knowledge_Base/vol3_host/gap/gap_modes_procedures.md`: 发现模式、连接模式与角色定义。
-    *   `Knowledge_Base/vol3_host/smp/smp_pairing_process.md`: 配对流程 (Phase 1-3)。
-    *   `Knowledge_Base/vol3_host/smp/smp_keys_distribution.md`: 密钥类型与分发。
-*   **Vol 4 HCI**:
-    *   `Knowledge_Base/vol4_hci/hci_packet_structures.md`: Command, Event, ACL/ISO Data 包结构与 H4 协议。
-    *   `Knowledge_Base/vol4_hci/hci_initialization_flow.md`: 初始化流程与核心命令映射。
-    *   `Knowledge_Base/vol4_hci/transport/hci_transport_overview.md`: 传输层概览及 H2/H4/H5/SD 差异对比。
-    *   `Knowledge_Base/vol4_hci/transport/h4_uart_transport.md`: UART H4 传输层与同步复位机制。
-    *   `Knowledge_Base/vol4_hci/transport/h2_usb_transport.md`: USB H2 传输层及端点映射架构。
-    *   `Knowledge_Base/vol4_hci/transport/h5_three_wire_uart_transport.md`: H5 三线制可靠传输层与 SLIP 机制。
-    *   `Knowledge_Base/vol4_hci/commands/hci_cmd_reset.md`: HCI_Reset 控制器复位命令。
-    *   `Knowledge_Base/vol4_hci/commands/hci_cmd_read_local_version_info.md`: Read Local Version Information 命令。
-    *   `Knowledge_Base/vol4_hci/commands/hci_le_set_adv_param.md`: LE Set Advertising Parameters 命令。
-*   **Vol 6 LE Controller**:
-    *   `Knowledge_Base/vol6_controller/link_layer_states.md`: 7 种 LL 状态机 (Standby, Adv, Conn, etc.)。
-    *   `Knowledge_Base/vol6_controller/air_interface_packets.md`: Uncoded/Coded PHY 包格式, PDU Header。
-    *   `Knowledge_Base/vol6_controller/connection_establishment.md`: 广播与连接建立的详细 Mermaid 时序图。
-    *   `Knowledge_Base/vol6_controller/isochronous_channels.md`: CIS/BIS 与 ISOAL 机制 (LE Audio)。
-*   **Profiles (Application Layer)**:
-    *   `Knowledge_Base/profiles/hid/hogp_architecture.md`: HOGP 架构与服务依赖。
-    *   `Knowledge_Base/profiles/hid/hid_report_map_guide.md`: Report Descriptor 实战与字节码解析。
-    *   `Knowledge_Base/profiles/hid/hid_device_development.md`: 嵌入式开发指南 (扫描、上报、功耗)。
-    *   `Knowledge_Base/profiles/hid/hid_to_RF_packet_flow.md`: 全栈数据流解构 (HID -> ATT -> L2CAP -> LL -> RF)。
-    *   `Knowledge_Base/profiles/hid/hogp_initialization_packet_flow.md`: HOGP 初始化配置 (UUID -> Handle 映射)。
-    *   `Knowledge_Base/profiles/hid/gap_role_in_hogp.md`: GAP 在 HOGP 中的角色 (广播、配对触发、回连)。
+> [!tip]
+>
+> check the index json [index.json](Knowledge_Base/index.json)
 
 ### ⏳ 待办 (To-Do)
+
+> [!tip]
+>
+> **Maintenance**: 随着 Spec 更新由AGENT持续维护。
+
 *   **SMP Deep Dive**: Legacy vs LE Secure Connections, Pairing Phases 1-3, Key Distribution details.
-*   **Maintenance**: 随着 Spec 更新持续维护。
 *   **More Profiles**: 扩展至 HRP (Heart Rate), FTMS (Fitness Machine) 等。
 *   **Advanced Controller**: Channel Sounding (v6.0) 深度实战。
 

@@ -1,7 +1,7 @@
 # Embedded Aimed Bluetooth Protocol Stack Knowledge Base
 
 > **Auto-Generated Index**
-> *Last Updated: 2026-02-27 12:41:44*
+> *Last Updated: 2026-03-10 14:05:39*
 
 Based on `Bluetooth Core Specification v6.2` and `HOGP v1.1`.
 This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill for accurate specification extraction.
@@ -10,6 +10,10 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
 
 ## 📚 Knowledge Index
 
+- **Components/** : *---*
+  - [链路层控制协议 (Link Layer Control Protocol - LLCP)](Knowledge_Base/Components/LLCP.md)
+  - [最大传输单元 (Max Transfer Unit - MTU)](Knowledge_Base/Components/Max_transfer_unit.md)
+  - [GATT 通知机制与 CCCD 深度解析](Knowledge_Base/Components/cccd_deep_dive.md)
 - **Profiles/** 
   - **Hid/** 
     - [嵌入式Hid设备开发——自底向上视角 V0](Knowledge_Base/profiles/hid/嵌入式HID设备开发——自底向上视角_v0.md)
@@ -60,10 +64,12 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
   - **Gatt/** 
     - [GATT Caching & Robustness (缓存与健壮性)](Knowledge_Base/vol3_host/gatt/caching_robustness.md)
     - [GATT 交互操作 (GATT Procedures)](Knowledge_Base/vol3_host/gatt/gatt_attribuite-IO交互.md)
+    - [GATT MTU Specification](Knowledge_Base/vol3_host/gatt/gatt_mtu_raw.md)
     - [GATT 核心概念与角色 (GATT Overview & Roles)](Knowledge_Base/vol3_host/gatt/gatt_overview.md)
     - [GATT Service Discovery (服务发现子过程)](Knowledge_Base/vol3_host/gatt/service_discovery.md)
   - **L2Cap/** 
     - [L2CAP 核心机制 (General Operation & Channels)](Knowledge_Base/vol3_host/l2cap/l2cap_general_operation.md)
+    - [L2CAP MTU Specification](Knowledge_Base/vol3_host/l2cap/l2cap_mtu_raw.md)
     - [L2CAP 数据包格式 (Packet Formats)](Knowledge_Base/vol3_host/l2cap/l2cap_packet_formats.md)
   - **Smp/** 
     - [SMP Key Distribution (密钥分发与管理)](Knowledge_Base/vol3_host/smp/smp_keys_distribution.md)
@@ -96,6 +102,7 @@ This knowledge base is governed by the Gemini Agent and utilizes the `pdf` skill
   - [BLE 连接建立流程 (Connection Establishment Flow)](Knowledge_Base/vol6_controller/connection_establishment.md)
   - [Isochronous Channels & ISOAL (等时通道详解)](Knowledge_Base/vol6_controller/isochronous_channels.md)
   - [BLE Link Layer 状态机 (Link Layer State Machine)](Knowledge_Base/vol6_controller/link_layer_states.md)
+  - [LLCP Specification](Knowledge_Base/vol6_controller/llcp_raw.md)
   - [MSC Raw Text Extraction](Knowledge_Base/vol6_controller/msc_raw_text.md)
   - **Iso Raw/** 
     - [ISOAL Features (Framed vs Unframed PDU)](Knowledge_Base/vol6_controller/iso_raw/isoal_features_raw.md)
